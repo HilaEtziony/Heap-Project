@@ -45,7 +45,8 @@ public class FibonacciHeap
 	 */
 	public HeapNode findMin()
 	{
-		return null; // should be replaced by student code
+
+		return this.min;
 	}
 
 	/**
@@ -89,7 +90,8 @@ public class FibonacciHeap
 	 */
 	public int totalLinks()
 	{
-		return 0; // should be replaced by student code
+
+		return this.TotalLinks;
 	}
 
 
@@ -100,7 +102,8 @@ public class FibonacciHeap
 	 */
 	public int totalCuts()
 	{
-		return 0; // should be replaced by student code
+
+		return this.Totalcuts;
 	}
 
 
@@ -121,7 +124,8 @@ public class FibonacciHeap
 	 */
 	public int size()
 	{
-		return 42; // should be replaced by student code
+
+		return this.Size;
 	}
 
 
@@ -132,7 +136,8 @@ public class FibonacciHeap
 	 */
 	public int numTrees()
 	{
-		return 0; // should be replaced by student code
+
+		return this.NumTrees;
 	}
 
 	/**
