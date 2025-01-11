@@ -82,6 +82,19 @@ public class FibonacciHeap
 	}
 
 
+	//GAD
+	public void delete_by_node(HeapNode x)
+	{
+		return; // should be replaced by student code
+	}
+
+
+	//GAD
+	public void successive_linking()
+	{
+		return; // should be replaced by student code
+	}
+
 	/**
 	 *
 	 * Return the total number of links.
