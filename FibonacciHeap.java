@@ -7,6 +7,10 @@
 public class FibonacciHeap
 {
 	public HeapNode min;
+	public int TotalLinks;
+	public int Totalcuts;
+	public int Size;
+	public int NumTree;
 
 	/**
 	 *
@@ -15,7 +19,11 @@ public class FibonacciHeap
 	 */
 	public FibonacciHeap()
 	{
-		// should be replaced by student code
+		this.min = null;
+		this.TotalLinks = 0;
+		this.Totalcuts = 0;
+		this.Size = 0;
+		this.NumTree = 0;
 	}
 
 	/**
