@@ -10,7 +10,7 @@ public class FibonacciHeap
 	public int TotalLinks;
 	public int Totalcuts;
 	public int Size;
-	public int NumTree;
+	public int NumTrees;
 
 	/**
 	 *
@@ -23,7 +23,7 @@ public class FibonacciHeap
 		this.TotalLinks = 0;
 		this.Totalcuts = 0;
 		this.Size = 0;
-		this.NumTree = 0;
+		this.NumTrees = 0;
 	}
 
 	/**
