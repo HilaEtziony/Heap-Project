@@ -1,14 +1,4 @@
 /**
- * id1:212201735
- * name1:Gad Rozen
- * username1:gadrozen
- * id2: 314621509
- * name2: Hila Etziony
- * username2: hilaetziony
- */
-
-
-/**
  * FibonacciHeap
  *
  * An implementation of Fibonacci heap over positive integers.
@@ -17,7 +7,7 @@
 public class FibonacciHeap
 {
 	public HeapNode min;
-	
+
 	/**
 	 *
 	 * Constructor to initialize an empty heap.
@@ -29,19 +19,19 @@ public class FibonacciHeap
 	}
 
 	/**
-	 * 
+	 *
 	 * pre: key > 0
 	 *
 	 * Insert (key,info) into the heap and return the newly generated HeapNode.
 	 *
 	 */
-	public HeapNode insert(int key, String info) 
-	{    
+	public HeapNode insert(int key, String info)
+	{
 		return null; // should be replaced by student code
 	}
 
 	/**
-	 * 
+	 *
 	 * Return the minimal HeapNode, null if empty.
 	 *
 	 */
@@ -51,7 +41,7 @@ public class FibonacciHeap
 	}
 
 	/**
-	 * 
+	 *
 	 * Delete the minimal item
 	 *
 	 */
@@ -62,32 +52,32 @@ public class FibonacciHeap
 	}
 
 	/**
-	 * 
+	 *
 	 * pre: 0<diff<x.key
-	 * 
+	 *
 	 * Decrease the key of x by diff and fix the heap. 
-	 * 
+	 *
 	 */
-	public void decreaseKey(HeapNode x, int diff) 
-	{    
+	public void decreaseKey(HeapNode x, int diff)
+	{
 		return; // should be replaced by student code
 	}
 
 	/**
-	 * 
+	 *
 	 * Delete the x from the heap.
 	 *
 	 */
-	public void delete(HeapNode x) 
-	{    
+	public void delete(HeapNode x)
+	{
 		return; // should be replaced by student code
 	}
 
 
 	/**
-	 * 
+	 *
 	 * Return the total number of links.
-	 * 
+	 *
 	 */
 	public int totalLinks()
 	{
@@ -96,9 +86,9 @@ public class FibonacciHeap
 
 
 	/**
-	 * 
+	 *
 	 * Return the total number of cuts.
-	 * 
+	 *
 	 */
 	public int totalCuts()
 	{
@@ -107,7 +97,7 @@ public class FibonacciHeap
 
 
 	/**
-	 * 
+	 *
 	 * Meld the heap with heap2
 	 *
 	 */
@@ -117,9 +107,9 @@ public class FibonacciHeap
 	}
 
 	/**
-	 * 
+	 *
 	 * Return the number of elements in the heap
-	 *   
+	 *
 	 */
 	public int size()
 	{
@@ -128,9 +118,9 @@ public class FibonacciHeap
 
 
 	/**
-	 * 
+	 *
 	 * Return the number of trees in the heap.
-	 * 
+	 *
 	 */
 	public int numTrees()
 	{
@@ -139,7 +129,7 @@ public class FibonacciHeap
 
 	/**
 	 * Class implementing a node in a Fibonacci Heap.
-	 *  
+	 *
 	 */
 	public static class HeapNode{
 		public int key;
