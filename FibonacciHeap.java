@@ -45,7 +45,6 @@ public class FibonacciHeap
 	 */
 	public HeapNode findMin()
 	{
-
 		return this.min;
 	}
 
@@ -90,7 +89,6 @@ public class FibonacciHeap
 	 */
 	public int totalLinks()
 	{
-
 		return this.TotalLinks;
 	}
 
@@ -102,7 +100,6 @@ public class FibonacciHeap
 	 */
 	public int totalCuts()
 	{
-
 		return this.Totalcuts;
 	}
 
@@ -124,7 +121,6 @@ public class FibonacciHeap
 	 */
 	public int size()
 	{
-
 		return this.Size;
 	}
 
@@ -136,7 +132,6 @@ public class FibonacciHeap
 	 */
 	public int numTrees()
 	{
-
 		return this.NumTrees;
 	}
 
