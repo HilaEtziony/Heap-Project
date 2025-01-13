@@ -74,6 +74,75 @@ public class FibonacciHeap
 
 	}
 
+	/**
+	 *
+	 * pre: 0<diff<x.key
+	 *
+	 * Decrease the key of x by diff and fix the heap.
+	 *
+	 */
+	public void decreaseKey(HeapNode x, int diff)
+	{
+		decreaseKey_selective_updating_min(x,diff, true);
+		return; // should be replaced by student code
+	}
+
+	/**
+	 *
+	 * pre: 0<diff<x.key
+	 *
+	 * Decrease the key of x by diff and fix the heap - update the min Node only if update_flag True.
+	 *
+	 */
+	public void decreaseKey_selective_updating_min(HeapNode x, int diff, boolean update_flag)
+	{
+		// decrease key
+		x.key = x.key-diff;
+		// update heap's min node if update_flag_is true
+		if (update_flag){
+			if (x.key < this.min.key) {
+				this.min = x;
+			}
+		}
+		// if x has parent, and he became smaller than his parent's key - do cascading cuts.
+		if (x.parent != null){
+			if (x.key < x.parent.key){
+				cascadingCuts(x, x.parent);
+			}
+		}
+		return;
+	}
+
+	public void cascadingCuts(HeapNode x, HeapNode y) {
+		HeapNode node_that_was_cut = cut(x,y);
+		this.add_to_tree_linked_list(node_that_was_cut);
+		this.Totalcuts += 1;
+		if (y.parent != null){
+			if (!y.mark){
+				y.mark = true;
+			}
+			else{
+				cascadingCuts(y, y.parent);
+			}
+		}
+		return;
+	}
+
+	public HeapNode cut(HeapNode x, HeapNode y) {
+		x.parent = null;
+		x.mark = false;
+		y.rank -= 1;
+		// x is an only child
+		if (x.next == x){
+			y.child = null;
+		}
+		else{
+			y.child = x.next;
+			x.prev.next = x.next;
+			x.next.prev = x.prev;
+		}
+		return x;
+	}
 
 	public void add_to_tree_linked_list(HeapNode node){
 		node.next = this.min.next;
