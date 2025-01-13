@@ -113,6 +113,13 @@ public class FibonacciHeap
 		return;
 	}
 
+	/**
+	 *
+	 * pre: y is x's parent.
+	 *
+	 * cascadingCuts(x, y) - do cascadingCuts and add the node the was cuts to the root's linked list.
+	 *
+	 */
 	public void cascadingCuts(HeapNode x, HeapNode y) {
 		HeapNode node_that_was_cut = cut(x,y);
 		this.add_to_tree_linked_list(node_that_was_cut);
@@ -128,6 +135,13 @@ public class FibonacciHeap
 		return;
 	}
 
+	/**
+	 *
+	 * pre: y is x's parent.
+	 *
+	 * cut(x, y) - cut x from y updates the heap's structure.
+	 *
+	 */
 	public HeapNode cut(HeapNode x, HeapNode y) {
 		x.parent = null;
 		x.mark = false;
@@ -144,6 +158,13 @@ public class FibonacciHeap
 		return x;
 	}
 
+	/**
+	 *
+	 * pre: heap is not empty.
+	 *
+	 * add_to_tree_linked_list(node) - add node to the root's kinked list.
+	 *
+	 */
 	public void add_to_tree_linked_list(HeapNode node){
 		node.next = this.min.next;
 		node.prev = this.min;
@@ -151,9 +172,6 @@ public class FibonacciHeap
 		this.min.next = node;
 		this.NumTrees += 1;
 	}
-
-
-
 
 	/**
 	 *
