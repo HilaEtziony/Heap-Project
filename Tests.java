@@ -90,7 +90,5 @@ public class Tests {
             System.out.println("problem min next");
         }
 
-
-
     }
 }
