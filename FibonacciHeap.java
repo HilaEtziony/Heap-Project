@@ -165,7 +165,7 @@ public class FibonacciHeap
 	 * add_to_tree_linked_list(node) - add node to the root's kinked list.
 	 *
 	 */
-	xpublic void add_to_tree_linked_list(HeapNode node){
+	public void add_to_tree_linked_list(HeapNode node){
 		node.next = this.min.next;
 		node.prev = this.min;
 		this.min.next.prev = node;
