@@ -12,6 +12,7 @@ public class FibonacciHeap
 	public int Size;
 	public int NumTrees;
 
+
 	/**
 	 *
 	 * Constructor to initialize an empty heap.
@@ -35,7 +36,21 @@ public class FibonacciHeap
 	 */
 	public HeapNode insert(int key, String info)
 	{
-		return null; // should be replaced by student code
+		HeapNode node = new HeapNode(key, info);
+		this.Size += 1;
+		if (this.min == null){
+			node.next = node;
+			node.prev = node;
+			this.min = node;
+			this.NumTrees += 1;
+		}
+		else{
+			add_to_tree_linked_list(node);
+			if (this.min.key > node.key){
+				this.min = node;
+			}
+		}
+		return node;
 	}
 
 	/**
@@ -59,17 +74,17 @@ public class FibonacciHeap
 
 	}
 
-	/**
-	 *
-	 * pre: 0<diff<x.key
-	 *
-	 * Decrease the key of x by diff and fix the heap. 
-	 *
-	 */
-	public void decreaseKey(HeapNode x, int diff)
-	{
-		return; // should be replaced by student code
+
+	public void add_to_tree_linked_list(HeapNode node){
+		node.next = this.min.next;
+		node.prev = this.min;
+		this.min.next.prev = node;
+		this.min.next = node;
+		this.NumTrees += 1;
 	}
+
+
+
 
 	/**
 	 *
@@ -124,8 +139,23 @@ public class FibonacciHeap
 	 */
 	public void meld(FibonacciHeap heap2)
 	{
-		return; // should be replaced by student code   		
+		//meld two roots linked lists.
+		HeapNode last_node_heap = this.min.prev;
+		this.min.prev.next = heap2.min;
+		heap2.min.prev.next = this.min;
+		this.min.prev = heap2.min.prev;
+		heap2.min.prev = last_node_heap;
+		// update heap's fields.
+		if (this.min.key > heap2.min.key){
+			this.min = heap2.min;
+		}
+		this.Size += heap2.Size;
+		this.NumTrees += heap2.NumTrees;
+		this.Totalcuts += heap2.Totalcuts;
+		this.TotalLinks += heap2.TotalLinks;
+		return;
 	}
+
 
 	/**
 	 *
@@ -148,6 +178,47 @@ public class FibonacciHeap
 		return this.NumTrees;
 	}
 
+
+	public void printHeap() {
+		if (this.min == null) {
+			System.out.println("The heap is empty.");
+			return;
+		}
+		System.out.println("Fibonacci Heap:");
+
+		FibonacciHeap.HeapNode start = this.min;
+		FibonacciHeap.HeapNode current = this.min;
+		int treeNumber = 1;
+
+		do {
+			System.out.println("Tree " + treeNumber + ":");
+			printTree(current, "", true);
+			current = current.next;
+			treeNumber++;
+		} while (current != start);
+	}
+
+	private void printTree(FibonacciHeap.HeapNode node, String prefix, boolean isLast) {
+		if (node == null) return;
+
+		// Print the current node as (key, "value")
+		System.out.print(prefix);
+		System.out.print(isLast ? "└── " : "├── ");
+		System.out.println("(" + node.key + ", \"" + node.info + "\")");
+
+		// Prepare prefix for the next level
+		prefix += isLast ? "    " : "│   ";
+
+		// Recursively print children
+		if (node.child != null) {
+			FibonacciHeap.HeapNode child = node.child;
+			do {
+				printTree(child, prefix, child.next == node.child);
+				child = child.next;
+			} while (child != node.child);
+		}
+	}
+
 	/**
 	 * Class implementing a node in a Fibonacci Heap.
 	 *
@@ -161,5 +232,21 @@ public class FibonacciHeap
 		public HeapNode parent;
 		public int rank;
 		public boolean mark;
+
+		/**
+		 *
+		 * Constructor to initialize an empty heap's node.
+		 *
+		 */
+		public HeapNode(int key, String info){
+			this.key = key;
+			this.info = info;
+			this.child = null;
+			this.next = null;
+			this.prev = null;
+			this.parent = null;
+			this.rank = 0;
+			this.mark = false;
+		}
 	}
 }
