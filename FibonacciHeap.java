@@ -200,8 +200,30 @@ public class FibonacciHeap
 		return; // should be replaced by student code
 	}
 	//GAD
-	public void linkTrees(HeapNode parent, HeapNode child){
-		return;
+	public void linkTrees(HeapNode x, HeapNode y){
+		// x.key should be lower or equal to y.key
+		if (x.key > y.key) {
+			HeapNode tmp = x;
+			x = y;
+			y = tmp;
+		}
+		//check this line after!!!
+		y = cutRoot(y);
+
+		// x has no children
+		if (x.child == null) {
+			x.child = y;
+		}
+		else{
+			y.next = x.child;
+			y.prev = x.child.prev;
+			y.prev.next = y;
+			x.child.prev = y;
+		}
+		x.rank += 1;
+		y.parent = x;
+		y.mark = false;
+		this.TotalLinks += 1;
 	}
 	/**
 	 * Cuts a root from the root list
