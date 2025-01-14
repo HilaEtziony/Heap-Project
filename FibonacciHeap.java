@@ -194,7 +194,14 @@ public class FibonacciHeap
 	//GAD
 	public void successive_linking()
 	{
+		int maxDegree = (int) Math.floor(Math.log(this.Size) / Math.log(2)) + 1;
+		HeapNode[] degreeTable = new HeapNode[maxDegree];
+		HeapNode current = this.min;
 		return; // should be replaced by student code
+	}
+	//GAD
+	private void linkTrees(HeapNode parent, HeapNode child){
+		return;
 	}
 
 	/**
