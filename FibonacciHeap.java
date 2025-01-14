@@ -142,7 +142,7 @@ public class FibonacciHeap
 	 * cut(x, y) - cut x from y updates the heap's structure.
 	 *
 	 */
-	gpublic HeapNode cut(HeapNode x, HeapNode y) {
+	public HeapNode cut(HeapNode x, HeapNode y) {
 		x.parent = null;
 		x.mark = false;
 		y.rank -= 1;
