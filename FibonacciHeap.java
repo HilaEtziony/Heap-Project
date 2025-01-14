@@ -197,10 +197,41 @@ public class FibonacciHeap
 		int maxDegree = (int) Math.floor(Math.log(this.Size) / Math.log(2)) + 1;
 		HeapNode[] degreeTable = new HeapNode[maxDegree];
 		HeapNode current = this.min;
-		return; // should be replaced by student code
+		int minkey = this.min.key;
+		HeapNode node = this.min.next;
+
+		while (this.NumTrees != 0){
+			HeapNode next = node.next;
+			node = cutRoot(node);
+			int rank = node.rank;
+
+			while (degreeTable[rank] != null){
+				node = linkTrees(node , degreeTable[rank]);
+				degreeTable[rank] = null;
+				rank += 1;
+			}
+			degreeTable[rank] = node;
+			node = next;
+		}
+		//update min root
+		for(HeapNode root : degreeTable){
+			if (root != null) {
+				if (root.key <= minkey){
+					minkey = root.key;
+					this.min = root;
+				}
+			}
+		}
+		this.NumTrees = 1;
+		degreeTable[this.min.rank] = null;
+		for(HeapNode root : degreeTable) {
+			if (root != null) {
+				this.add_to_tree_linked_list(root);
+			}
+		}
 	}
 	//GAD
-	public void linkTrees(HeapNode x, HeapNode y){
+	public HeapNode linkTrees(HeapNode x, HeapNode y){
 		// x.key should be lower or equal to y.key
 		if (x.key > y.key) {
 			HeapNode tmp = x;
@@ -208,7 +239,7 @@ public class FibonacciHeap
 			y = tmp;
 		}
 		//check this line after!!!
-		y = cutRoot(y);
+		//y = cutRoot(y);
 
 		// x has no children
 		if (x.child == null) {
@@ -224,6 +255,7 @@ public class FibonacciHeap
 		y.parent = x;
 		y.mark = false;
 		this.TotalLinks += 1;
+		return x;
 	}
 	/**
 	 * Cuts a root from the root list
