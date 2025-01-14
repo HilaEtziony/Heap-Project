@@ -200,8 +200,20 @@ public class FibonacciHeap
 		return; // should be replaced by student code
 	}
 	//GAD
-	private void linkTrees(HeapNode parent, HeapNode child){
+	public void linkTrees(HeapNode parent, HeapNode child){
 		return;
+	}
+	/**
+	 * Cuts a root from the root list
+	 *
+	 */
+	public HeapNode cutRoot(HeapNode node){
+		node.prev.next = node.next;
+		node.next.prev = node.prev;
+		node.next = node;
+		node.prev = node;
+		this.NumTrees -= 1;
+		return node;
 	}
 
 	/**
