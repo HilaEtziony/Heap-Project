@@ -146,7 +146,7 @@ public class FibonacciHeap
 		x.parent = null;
 		x.mark = false;
 		y.rank -= 1;
-		// x is an only child
+		// if x is an only child
 		if (x.next == x){
 			y.child = null;
 		}
@@ -154,6 +154,8 @@ public class FibonacciHeap
 			y.child = x.next;
 			x.prev.next = x.next;
 			x.next.prev = x.prev;
+			x.next = null;
+			x.prev = null;
 		}
 		return x;
 	}
