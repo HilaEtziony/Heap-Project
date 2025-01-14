@@ -199,14 +199,14 @@ public class FibonacciHeap
 		HeapNode current = this.min;
 		int minkey = this.min.key;
 		HeapNode node = this.min.next;
-
+		//Link trees
 		while (this.NumTrees != 0){
 			HeapNode next = node.next;
 			node = cutRoot(node);
 			int rank = node.rank;
 
 			while (degreeTable[rank] != null){
-				node = linkTrees(node , degreeTable[rank]);
+				node = this.linkTrees(node , degreeTable[rank]);
 				degreeTable[rank] = null;
 				rank += 1;
 			}
@@ -224,6 +224,7 @@ public class FibonacciHeap
 		}
 		this.NumTrees = 1;
 		degreeTable[this.min.rank] = null;
+		//Pull the trees out of the bucket
 		for(HeapNode root : degreeTable) {
 			if (root != null) {
 				this.add_to_tree_linked_list(root);
