@@ -9,29 +9,49 @@ public class gadTests {
         heap.insert(15, "Node 3");
         heap.insert(30, "Node 4");
         heap.insert(20, "Node 5");
-
-        // הדפסת ההדפסה של heap
-        System.out.println("Before successive_linking:");
-        heap.printHeap();
-
-        // ביצוע successive_linking
+        //heap.printHeap();
         heap.successive_linking();
-
-        // הדפסת ההדפסה אחרי הקריאה ל-successive_linking
-        System.out.println("After successive_linking:");
-        heap.printHeap();
-
-        // הוספת צמתים נוספים לבדוק את ההתנהגות של successive_linking
-        heap.insert(12, "Node 6");
-        heap.insert(18, "Node 7");
-
-        System.out.println("Before second successive_linking:");
-        heap.printHeap();
-
-        // ביצוע successive_linking שוב
+        //heap.printHeap();
+        heap.insert(30, "Node 4");
+        heap.insert(20, "Node 5");
+        //heap.printHeap();
         heap.successive_linking();
-
-        System.out.println("After second successive_linking:");
+        System.out.println("");
         heap.printHeap();
+        heap.insert(2, "Node 4");
+        heap.insert(20, "Node 5");
+        heap.insert(30, "Node 4");
+        heap.successive_linking();
+        System.out.println("");
+        heap.printHeap();
+        heap.insert(1, "Node 5");
+        heap.insert(1, "Node 5");
+        heap.insert(30, "Node 4");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");heap.insert(20, "Node 5");
+        heap.insert(20, "Node 5");
+
+        System.out.println("");
+        heap.successive_linking();
+        heap.printHeap();
+
+
+
     }
 }
