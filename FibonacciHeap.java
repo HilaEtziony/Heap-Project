@@ -184,14 +184,21 @@ public class FibonacciHeap
 	}
 
 
-	//GAD
-	public void delete_by_node(HeapNode x)
+	/**
+	 * Delete the root node x from the heap and add his children to the list of roots.
+	 * @param x the root node to be deleted from the heap.
+	 */
+	public void delete_root(HeapNode x)
 	{
 		return; // should be replaced by student code
 	}
 
 
-	//GAD
+
+	/**
+	 * Perform successive linking of trees in the heap.
+	 * This method links trees of the same rank in the heap and updates the minimum
+	 */
 	public void successive_linking()
 	{
 		int maxDegree = (int) Math.floor(Math.log(this.Size) / Math.log(2)) + 1;
@@ -231,7 +238,14 @@ public class FibonacciHeap
 			}
 		}
 	}
-	//GAD
+	/**
+	 * Link two trees, x and y, by combining them into one tree.
+	 * The method also updates the total number of links performed.
+	 *
+	 * @param x the root of the first tree - Assume it is cut from the list of roots.
+	 * @param y the root of the second tree to be linked to x - Assume it is cut from the list of roots.
+	 * @return the new root of the merged tree (which is x).
+	 */
 	public HeapNode linkTrees(HeapNode x, HeapNode y){
 		// x.key should be lower or equal to y.key
 		if (x.key > y.key) {
@@ -239,8 +253,6 @@ public class FibonacciHeap
 			x = y;
 			y = tmp;
 		}
-		//check this line after!!!
-		//y = cutRoot(y);
 
 		// x has no children
 		if (x.child == null) {
@@ -259,8 +271,10 @@ public class FibonacciHeap
 		return x;
 	}
 	/**
-	 * Cuts a root from the root list
-	 *
+	 * Cuts a root from the root list and updates the heap's structure.
+
+	 * @param node the node to be cut from the root list.
+	 * @return the cut node, which will be reinserted back into the heap later.
 	 */
 	public HeapNode cutRoot(HeapNode node){
 		node.prev.next = node.next;
