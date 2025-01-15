@@ -186,17 +186,105 @@ public class FibonacciHeap
 	}
 
 
-	//GAD
-	public void delete_by_node(HeapNode x)
+	/**
+	 * Delete the root node x from the heap and add his children to the list of roots.
+	 * @param x the root node to be deleted from the heap.
+	 */
+	public void delete_root(HeapNode x)
 	{
 		return; // should be replaced by student code
 	}
 
 
-	//GAD
+
+	/**
+	 * Perform successive linking of trees in the heap.
+	 * This method links trees of the same rank in the heap and updates the minimum
+	 */
 	public void successive_linking()
 	{
-		return; // should be replaced by student code
+		int maxDegree = (int) Math.floor(Math.log(this.Size) / Math.log(2)) + 1;
+		HeapNode[] degreeTable = new HeapNode[maxDegree];
+		HeapNode current = this.min;
+		int minkey = this.min.key;
+		HeapNode node = this.min.next;
+		//Link trees
+		while (this.NumTrees != 0){
+			HeapNode next = node.next;
+			node = cutRoot(node);
+			int rank = node.rank;
+
+			while (degreeTable[rank] != null){
+				node = this.linkTrees(node , degreeTable[rank]);
+				degreeTable[rank] = null;
+				rank += 1;
+			}
+			degreeTable[rank] = node;
+			node = next;
+		}
+		//update min root
+		for(HeapNode root : degreeTable){
+			if (root != null) {
+				if (root.key <= minkey){
+					minkey = root.key;
+					this.min = root;
+				}
+			}
+		}
+		this.NumTrees = 1;
+		degreeTable[this.min.rank] = null;
+		//Pull the trees out of the bucket
+		for(HeapNode root : degreeTable) {
+			if (root != null) {
+				this.add_to_tree_linked_list(root);
+			}
+		}
+	}
+	/**
+	 * Link two trees, x and y, by combining them into one tree.
+	 * The method also updates the total number of links performed.
+	 *
+	 * @param x the root of the first tree - Assume it is cut from the list of roots.
+	 * @param y the root of the second tree to be linked to x - Assume it is cut from the list of roots.
+	 * @return the new root of the merged tree (which is x).
+	 */
+	public HeapNode linkTrees(HeapNode x, HeapNode y){
+		// x.key should be lower or equal to y.key
+		if (x.key > y.key) {
+			HeapNode tmp = x;
+			x = y;
+			y = tmp;
+		}
+
+		// x has no children
+		if (x.child == null) {
+			x.child = y;
+		}
+		else{
+			y.next = x.child;
+			y.prev = x.child.prev;
+			y.prev.next = y;
+			x.child.prev = y;
+		}
+		x.rank += 1;
+		y.parent = x;
+		y.mark = false;
+		this.TotalLinks += 1;
+		return x;
+	}
+	/**
+	 * Cuts a root from the root list and updates the heap's structure.
+
+	 * @param node the node to be cut from the root list.
+	 * @return the cut node, which will be reinserted back into the heap later.
+	 */
+	public HeapNode cutRoot(HeapNode node){
+		node.prev.next = node.next;
+		node.next.prev = node.prev;
+		node.next = node;
+		node.prev = node;
+		this.NumTrees -= 1;
+		return node;
 	}
 
 	/**
