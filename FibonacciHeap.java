@@ -154,6 +154,8 @@ public class FibonacciHeap
 			y.child = x.next;
 			x.prev.next = x.next;
 			x.next.prev = x.prev;
+			x.next = null;
+			x.prev = null;
 		}
 		return x;
 	}
