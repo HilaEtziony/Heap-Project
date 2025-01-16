@@ -266,6 +266,7 @@ public class FibonacciHeap
 			y.prev.next = y;
 			x.child.prev = y;
 		}
+		x.child = y;
 		x.rank += 1;
 		y.parent = x;
 		y.mark = false;
