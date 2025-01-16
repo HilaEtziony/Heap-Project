@@ -256,11 +256,8 @@ public class FibonacciHeap
 			y = tmp;
 		}
 
-		// x has no children
-		if (x.child == null) {
-			x.child = y;
-		}
-		else{
+		// x has  children
+		if (x.child != null) {
 			y.next = x.child;
 			y.prev = x.child.prev;
 			y.prev.next = y;
