@@ -151,7 +151,9 @@ public class FibonacciHeap
 			y.child = null;
 		}
 		else{
-			y.child = x.next;
+			if (y.child == x){
+				y.child = x.next;
+			}
 			x.prev.next = x.next;
 			x.next.prev = x.prev;
 			x.next = null;
