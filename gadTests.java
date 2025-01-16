@@ -45,7 +45,18 @@ public class gadTests {
         heap.insert(2, "Node 5");
         heap.insert(21, "Node 5");
         heap.insert(22, "Node 5");heap.insert(20, "Node 5");
-        heap.insert(23, "Node 5");
+        heap.insert(24, "Node 5");
+        heap.insert(25, "Node 5");
+        heap.insert(26, "Node 5");
+        heap.insert(27, "Node 5");
+        heap.insert(27, "Node 5");
+        heap.insert(28, "Node 5");
+        heap.insert(29, "Node 5");
+        heap.insert(31, "Node 5");
+        heap.insert(32, "Node 5");
+        heap.insert(33, "Node 5");
+        heap.insert(34, "Node 5");
+        heap.insert(35, "Node 5");
 
         System.out.println("");
         heap.successive_linking();
