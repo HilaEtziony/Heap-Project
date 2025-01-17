@@ -183,11 +183,11 @@ public class FibonacciHeap
 	 */
 	public void delete(HeapNode x)
 	{
+		HeapNode node = x;
 		if (x == this.min){
 			deleteMin();
 			return;
 		}
-		HeapNode node = x;
 		//make x to be a root
 		if(x.parent != null){
 			int minkey =x.key - this.min.key + 1;
