@@ -70,8 +70,9 @@ public class FibonacciHeap
 	 */
 	public void deleteMin()
 	{
-		return; // should be replaced by student code
-
+		delete_root(this.min);
+		if (this.min != null)
+			this.successive_linking();
 	}
 
 	/**
@@ -184,17 +185,61 @@ public class FibonacciHeap
 	 */
 	public void delete(HeapNode x)
 	{
-		return; // should be replaced by student code
+		HeapNode node = x;
+		if (x == this.min){
+			deleteMin();
+			return;
+		}
+		//make x to be a root
+		if(x.parent != null){
+			int minkey =x.key - this.min.key + 1;
+			this.decreaseKey_selective_updating_min(x , minkey,false);
+		}
+		delete_root(node);
 	}
 
 
 	/**
 	 * Delete the root node x from the heap and add his children to the list of roots.
-	 * @param x the root node to be deleted from the heap.
+	 * @param x is a root.
 	 */
 	public void delete_root(HeapNode x)
 	{
-		return; // should be replaced by student code
+		if (this.min == x){
+			this.min = this.min.next;
+		}
+		x = cutRoot(x);
+		int x_rank = x.rank;
+		if (x.rank != 0){
+			HeapNode node = x.child;
+			x.child = null;
+
+			//Parent reset
+			while (node.parent != null){
+				node.parent = null;
+				node.mark = false;
+				node = node.next;
+			}
+			//meld node to root list
+			if (this.NumTrees == 0) {
+				this.min = node;
+			}
+			else{
+				HeapNode last_node_heap = this.min.prev;
+				this.min.prev.next = node;
+				node.prev.next = this.min;
+				this.min.prev = node.prev;
+				node.prev = last_node_heap;
+			}
+		}
+		this.NumTrees += x_rank;
+		this.Totalcuts+= x_rank;
+		this.Size -= 1;
+
+		//delete last node
+		if (this.Size == 0){
+			this.min = null;
+		}
 	}
 
 
