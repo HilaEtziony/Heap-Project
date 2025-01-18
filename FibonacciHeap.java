@@ -318,7 +318,7 @@ public class FibonacciHeap
 	/**
 	 * Cuts a root from the root list and updates the heap's structure.
 
-	 * @param node the node to be cut from the root list.
+	 * @param node = the node to be cut from the root list.
 	 * @return the cut node, which will be reinserted back into the heap later.
 	 */
 	public HeapNode cutRoot(HeapNode node){
