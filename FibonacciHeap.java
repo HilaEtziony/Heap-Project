@@ -83,6 +83,9 @@ public class FibonacciHeap
 	 */
 	public void decreaseKey(HeapNode x, int diff)
 	{
+		if (x == null){
+			return;
+		}
 		decreaseKey_selective_updating_min(x,diff, true);
 		return; // should be replaced by student code
 	}
@@ -98,16 +101,16 @@ public class FibonacciHeap
 	{
 		// decrease key
 		x.key = x.key-diff;
-		// update heap's min node if update_flag_is true
-		if (update_flag){
-			if (x.key < this.min.key) {
-				this.min = x;
-			}
-		}
 		// if x has parent, and he became smaller than his parent's key - do cascading cuts.
 		if (x.parent != null){
 			if (x.key < x.parent.key){
 				cascadingCuts(x, x.parent);
+			}
+		}
+		// update heap's min node if update_flag_is true
+		if (update_flag){
+			if (x.key < this.min.key) {
+				this.min = x;
 			}
 		}
 		return;
@@ -151,7 +154,9 @@ public class FibonacciHeap
 			y.child = null;
 		}
 		else{
-			y.child = x.next;
+			if (y.child == x){
+				y.child = x.next;
+			}
 			x.prev.next = x.next;
 			x.next.prev = x.prev;
 			x.next = null;
@@ -170,6 +175,7 @@ public class FibonacciHeap
 	public void add_to_tree_linked_list(HeapNode node){
 		node.next = this.min.next;
 		node.prev = this.min;
+		node.mark = false;
 		this.min.next.prev = node;
 		this.min.next = node;
 		this.NumTrees += 1;
@@ -358,6 +364,9 @@ public class FibonacciHeap
 	 */
 	public void meld(FibonacciHeap heap2)
 	{
+		if (heap2 == null){
+			return;
+		}
 		//meld two roots linked lists.
 		HeapNode last_node_heap = this.min.prev;
 		this.min.prev.next = heap2.min;
