@@ -12,7 +12,6 @@ public class FibonacciHeap
 	public int Size;
 	public int NumTrees;
 
-
 	/**
 	 *
 	 * Constructor to initialize an empty heap.
