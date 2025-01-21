@@ -10,7 +10,7 @@ public class FibonacciHeapTest {
             testMeld();
             testDecreaseKey();
             testDelete();
-            //testEdgeCases();
+            testEdgeCases();
             testStressTest();
             testRandomMeld();
             testRandomDecreaseKey();
@@ -18,7 +18,7 @@ public class FibonacciHeapTest {
             testSize();
             testFindMin();
             testInsert();
-            //testDeleteMin();
+            testDeleteMin();
             System.out.println("All tests passed successfully! ✅");
         } catch (AssertionError e) {
             System.err.println("Test failed: " + e.getMessage());
