@@ -12,7 +12,6 @@ public class FibonacciHeap
 	public int Size;
 	public int NumTrees;
 
-
 	/**
 	 *
 	 * Constructor to initialize an empty heap.
@@ -189,6 +188,9 @@ public class FibonacciHeap
 	 */
 	public void delete(HeapNode x)
 	{
+		if (x == null){
+			return;
+		}
 		HeapNode node = x;
 		if (x == this.min){
 			deleteMin();
@@ -209,6 +211,10 @@ public class FibonacciHeap
 	 */
 	public void delete_root(HeapNode x)
 	{
+		if (this.min == null){
+			return;
+		}
+
 		if (this.min == x){
 			this.min = this.min.next;
 		}
@@ -324,7 +330,7 @@ public class FibonacciHeap
 	/**
 	 * Cuts a root from the root list and updates the heap's structure.
 
-	 * @param node the node to be cut from the root list.
+	 * @param node = the node to be cut from the root list.
 	 * @return the cut node, which will be reinserted back into the heap later.
 	 */
 	public HeapNode cutRoot(HeapNode node){
