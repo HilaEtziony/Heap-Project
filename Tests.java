@@ -94,7 +94,9 @@ public class Tests {
         h.deleteMin();
         h.printHeap();
         FibonacciHeap.HeapNode node = h.min.child.child;
+        System.out.println(h.totalCuts());
         h.decreaseKey(node,7);
+        System.out.println(h.totalCuts());
         h.printHeap();
         if (h.min.key != 3){
             System.out.println("problem min");
@@ -116,10 +118,14 @@ public class Tests {
         System.out.println(h.min.child.child.key);
         System.out.println(h.min.child.child.next.key);
         System.out.println(h.min.child.child.next.next.key);
+        System.out.println(h.totalCuts());
         h.decreaseKey(h.min.child.child,42);
+        System.out.println(h.totalCuts());
         h.printHeap();
         h.decreaseKey(h.min.child.child,69);
+        System.out.println(h.totalCuts());
         h.printHeap();
         System.out.println(h.min.key);
+
     }
 }
