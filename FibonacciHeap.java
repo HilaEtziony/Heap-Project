@@ -84,6 +84,9 @@ public class FibonacciHeap
 	 */
 	public void decreaseKey(HeapNode x, int diff)
 	{
+		if (x == null){
+			return;
+		}
 		decreaseKey_selective_updating_min(x,diff, true);
 		return; // should be replaced by student code
 	}
@@ -362,6 +365,9 @@ public class FibonacciHeap
 	 */
 	public void meld(FibonacciHeap heap2)
 	{
+		if (heap2 == null){
+			return;
+		}
 		//meld two roots linked lists.
 		HeapNode last_node_heap = this.min.prev;
 		this.min.prev.next = heap2.min;
