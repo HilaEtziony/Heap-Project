@@ -90,5 +90,36 @@ public class Tests {
             System.out.println("problem min next");
         }
 
+        h.printHeap();
+        h.deleteMin();
+        h.printHeap();
+        FibonacciHeap.HeapNode node = h.min.child.child;
+        h.decreaseKey(node,7);
+        h.printHeap();
+        if (h.min.key != 3){
+            System.out.println("problem min");
+        }
+
+
+        h.insert(20, "g");
+        h.insert(10, "dfs");
+        h.insert(50,"h");
+        h.insert(60, "g");
+        h.insert(70, "dfs");
+        h.insert(30,"h");
+        h.insert(30,"h");
+        h.printHeap();
+        h.deleteMin();
+        h.printHeap();
+
+
+        System.out.println(h.min.child.child.key);
+        System.out.println(h.min.child.child.next.key);
+        System.out.println(h.min.child.child.next.next.key);
+        h.decreaseKey(h.min.child.child,42);
+        h.printHeap();
+        h.decreaseKey(h.min.child.child,69);
+        h.printHeap();
+        System.out.println(h.min.key);
     }
 }
