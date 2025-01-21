@@ -189,7 +189,7 @@ public class FibonacciHeap
 	public void delete(HeapNode x)
 	{
 		if (x == null){
-			return
+			return;
 		}
 		HeapNode node = x;
 		if (x == this.min){
