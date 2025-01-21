@@ -188,6 +188,9 @@ public class FibonacciHeap
 	 */
 	public void delete(HeapNode x)
 	{
+		if (x == null){
+			return
+		}
 		HeapNode node = x;
 		if (x == this.min){
 			deleteMin();
@@ -208,6 +211,10 @@ public class FibonacciHeap
 	 */
 	public void delete_root(HeapNode x)
 	{
+		if (this.min == null){
+			return;
+		}
+
 		if (this.min == x){
 			this.min = this.min.next;
 		}
