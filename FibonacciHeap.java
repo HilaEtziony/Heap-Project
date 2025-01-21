@@ -99,16 +99,16 @@ public class FibonacciHeap
 	{
 		// decrease key
 		x.key = x.key-diff;
-		// update heap's min node if update_flag_is true
-		if (update_flag){
-			if (x.key < this.min.key) {
-				this.min = x;
-			}
-		}
 		// if x has parent, and he became smaller than his parent's key - do cascading cuts.
 		if (x.parent != null){
 			if (x.key < x.parent.key){
 				cascadingCuts(x, x.parent);
+			}
+		}
+		// update heap's min node if update_flag_is true
+		if (update_flag){
+			if (x.key < this.min.key) {
+				this.min = x;
 			}
 		}
 		return;
@@ -173,6 +173,7 @@ public class FibonacciHeap
 	public void add_to_tree_linked_list(HeapNode node){
 		node.next = this.min.next;
 		node.prev = this.min;
+		node.mark = false;
 		this.min.next.prev = node;
 		this.min.next = node;
 		this.NumTrees += 1;
