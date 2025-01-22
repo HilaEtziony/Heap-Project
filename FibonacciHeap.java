@@ -455,6 +455,10 @@ public class FibonacciHeap
 		}
 	}
 
+	public boolean empty(){
+		return this.Size == 0;
+	}
+
 	/**
 	 * Class implementing a node in a Fibonacci Heap.
 	 *
@@ -483,6 +487,10 @@ public class FibonacciHeap
 			this.parent = null;
 			this.rank = 0;
 			this.mark = false;
+		}
+
+		public int getKey(){
+			return this.key;
 		}
 	}
 }
