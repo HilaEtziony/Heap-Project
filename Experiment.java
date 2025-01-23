@@ -13,12 +13,12 @@ public class Experiment {
     public static void test1(){
         System.out.println("test1");
         for(int i=1; i<=5; i++){
-            int n = (int) Math.pow(3, i+7);
-            long sumElapsedTime = 0;
-            long sumHeapSize = 0;
-            long sumTotalLinks = 0;
-            long sumTotalCuts = 0;
-            long sumNumTrees = 0;
+            int n = (int) Math.pow(3, i+7)-1;
+            float sumElapsedTime = 0;
+            float sumHeapSize = 0;
+            float sumTotalLinks = 0;
+            float sumTotalCuts = 0;
+            float sumNumTrees = 0;
 
             for(int j=1; j<=20; j++){
 
@@ -56,12 +56,12 @@ public class Experiment {
     public static void test2(){
         System.out.println("test2");
         for(int i=1; i<=5; i++){
-            int n = (int) Math.pow(3, i+7);
-            long sumElapsedTime = 0;
-            long sumHeapSize = 0;
-            long sumTotalLinks = 0;
-            long sumTotalCuts = 0;
-            long sumNumTrees = 0;
+            int n = (int) Math.pow(3, i+7)-1;
+            float sumElapsedTime = 0;
+            float sumHeapSize = 0;
+            float sumTotalLinks = 0;
+            float sumTotalCuts = 0;
+            float sumNumTrees = 0;
 
             for(int j=1; j<=20; j++){
 
@@ -102,12 +102,12 @@ public class Experiment {
     public static void test3(){
         System.out.println("test3");
         for(int i=1; i<=5; i++){
-            int n = (int) Math.pow(3, i+7);
-            long sumElapsedTime = 0;
-            long sumHeapSize = 0;
-            long sumTotalLinks = 0;
-            long sumTotalCuts = 0;
-            long sumNumTrees = 0;
+            int n = (int) Math.pow(3, i+7)-1;
+            float sumElapsedTime = 0;
+            float sumHeapSize = 0;
+            float sumTotalLinks = 0;
+            float sumTotalCuts = 0;
+            float sumNumTrees = 0;
 
             for(int j=1; j<=20; j++){
 
