@@ -61,6 +61,12 @@ public class gadTests {
         System.out.println("");
         heap.successive_linking();
         heap.printHeap();
+        System.out.println("Heap Details:");
+        System.out.println("Min node: " + (heap.findMin() != null ? "(" + heap.findMin().key + ", " + heap.findMin().info + ")" : "null"));
+        System.out.println("Total number of trees: " + heap.numTrees());
+        System.out.println("Total size (number of nodes): " + heap.size());
+        System.out.println("Total number of cuts: " + heap.totalCuts());
+        System.out.println("Total number of links: " + heap.totalLinks());
 
 
 
